@@ -1,6 +1,7 @@
 package acme.features.anonymous.shout;
 
 import java.util.Collection;
+import acme.entities.shouts;
 
 import org.springframework.data.jpa.repository.Query;
 
@@ -12,3 +13,4 @@ public interface AnonymousShoutRepository extends AbstractRepository{
 	Collection<Shout> findMany();
 
 }
+
