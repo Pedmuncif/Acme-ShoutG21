@@ -3,6 +3,7 @@ package acme.features.anonymous.shout;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import acme.entities.shouts.Shout;
 import acme.framework.components.Errors;
@@ -11,6 +12,7 @@ import acme.framework.components.Request;
 import acme.framework.entities.Anonymous;
 import acme.framework.services.AbstractCreateService;
 
+@Service
 public class AnonymousShoutCreateService implements AbstractCreateService<Anonymous, Shout> {
 	
 	// Internal State
