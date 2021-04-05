@@ -41,7 +41,141 @@
 		<property name="text" value="Just turning 50!"/>
 		<property name="info" value="http://www.example.org"></property>
 	</bean>
-
-</beans>
-
 	
+	<bean id="shout04" class="acme.entities.shouts.Shout">
+		<property name="moment" value="2021/03/05 12:43"/>
+		<property name="author" value="Pedrito Pere"/>
+		<property name="text" value="Bienvenidos al oasis!"/>
+		<property name="info"><null></null></property>
+	</bean>
+	
+	<bean id="shout05" class="acme.entities.shouts.Shout">
+		<property name="moment" value="2021/03/23 01:28"/>
+		<property name="author" value="Kike Morenito"/>
+		<property name="text" value="Soy el mejor del mundo al battlefield!"/>
+		<property name="info" value="http://www.example.org"></property>
+	</bean>
+	
+	<!--  User Accounts  -->
+	
+	<bean name="employer1UserAccount" class="acme.framework.entities.UserAccount">
+		<property name="username" value="enrmorvaz"/>
+		<property name="password" value="enrmorvaz"/>
+		<property name="identity">
+			<bean class="acme.datatypes.UserIdentity">
+				<property name="name" value="Enrique"/>
+				<property name="surname" value="Moreno"/>
+				<property name="email" value="enrmorvaz@alum.us.es"/>
+			</bean>
+		</property>
+		<property name="enable" value="true"/>
+		<property name="roles">
+			<list>
+				<ref bean="employer1Employer"/>
+				<ref bean="employer1Authenticated"/>
+			</list>
+		</property>
+	</bean>
+	
+	<bean name="employer1Employer" class="acme.framework.entities.Employer">
+		<property name="company" value="Acme Shout, Inc"/>
+		<property name="sector" value="Sector 1"/>
+		<property name="userAccount" ref="employer1UserAccount"/>
+	</bean>
+	
+	<bean name="employer1Authenticated" class="acme.framework.entities.Authenticated">
+		<property name="userAccount" ref="employer1UserAccount"/>
+	</bean>
+	
+	<bean name="employer2UserAccount" class="acme.framework.entities.UserAccount">
+		<property name="username" value="pedcarmor"/>
+		<property name="password" value="pedcarmor"/>
+		<property name="identity">
+			<bean class="acme.datatypes.UserIdentity">
+				<property name="name" value="Pedro Pablo"/>
+				<property name="surname" value="Carvajal"/>
+				<property name="email" value="pedcarmor@alum.us.es"/>
+			</bean>
+		</property>
+		<property name="enable" value="true"/>
+		<property name="roles">
+			<list>
+				<ref bean="employer2Employer"/>
+				<ref bean="employer2Authenticated"/>
+			</list>
+		</property>
+	</bean>
+	
+	<bean name="employer2Employer" class="acme.framework.entities.Employer">
+		<property name="company" value="Acme Shout, Inc"/>
+		<property name="sector" value="Sector 1"/>
+		<property name="userAccount" ref="employer2UserAccount"/>
+	</bean>
+	
+	<bean name="employer2Authenticated" class="acme.framework.entities.Authenticated">
+		<property name="userAccount" ref="employer2UserAccount"/>
+	</bean>
+	
+	<!--  Jobs  -->
+	
+	<bean name="job1" class="acme.entities.jobs.Job">
+		<property name="reference" value="EMP1-JOB1"/>
+		<property name="title" value="Title 1"/>
+		<property name="deadline" value="2030/12/11 23:59"/>
+		<property name="salary" value="15,000.98"/>
+		<property name="score" value="10.45"/>
+		<property name="description" value="Lorem ipsum sit dolor amet."/>
+		<property name="moreInfo" value="http://www.example.com"/>
+		<property name="finalMode" value="true"/>
+		<property name="employer" ref="employer1Employer"/>
+	</bean>
+	
+	<bean name="job2" class="acme.entities.jobs.Job">
+		<property name="reference" value="EMP1-JOB2"/>
+		<property name="title" value="Title 2"/>
+		<property name="deadline" value="2030/12/11 23:59"/>
+		<property name="salary" value="20,000.00"/>
+		<property name="score" value="99.98"/>
+		<property name="description" value="Lorem ipsum sit dolor amet."/>
+		<property name="moreInfo" value="http://www.example.com"/>
+		<property name="finalMode" value="true"/>
+		<property name="employer" ref="employer1Employer"/>
+	</bean>
+	
+	<bean name="job3" class="acme.entities.jobs.Job">
+		<property name="reference" value="EMP2-JOB1"/>
+		<property name="title" value="Title 3"/>
+		<property name="deadline" value="2030/12/12 23:59"/>
+		<property name="salary" value="25,000.45"/>
+		<property name="score" value="56.26"/>
+		<property name="description" value="Lorem ipsum sit dolor amet."/>
+		<property name="moreInfo" value="http://www.example.com"/>
+		<property name="finalMode" value="true"/>
+		<property name="employer" ref="employer2Employer"/>
+	</bean>
+	
+	<bean name="job4" class="acme.entities.jobs.Job">
+		<property name="reference" value="EMP2-JOB2"/>
+		<property name="title" value="Title 4"/>
+		<property name="deadline" value="2029/11/10 23:59"/>
+		<property name="salary" value="18,578.64"/>
+		<property name="score" value="66.45"/>
+		<property name="description" value="Lorem ipsum sit dolor amet."/>
+		<property name="moreInfo" value="http://www.example.com"/>
+		<property name="finalMode" value="true"/>
+		<property name="employer" ref="employer2Employer"/>
+	</bean>
+	
+	<bean name="job5" class="acme.entities.jobs.Job">
+		<property name="reference" value="EMP2-JOB3"/>
+		<property name="title" value="Title 5"/>
+		<property name="deadline" value="2031/11/10 23:59"/>
+		<property name="salary" value="20,623.54"/>
+		<property name="score" value="14.78"/>
+		<property name="description" value="Lorem ipsum sit dolor amet."/>
+		<property name="moreInfo" value="http://www.example.com"/>
+		<property name="finalMode" value="true"/>
+		<property name="employer" ref="employer2Employer"/>
+	</bean>
+	
+</beans>
