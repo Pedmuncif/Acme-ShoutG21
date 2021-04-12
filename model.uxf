@@ -375,4 +375,38 @@ m1=0..*
 m2=1</panel_attributes>
     <additional_attributes>10.0;110.0;10.0;10.0</additional_attributes>
   </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>0</x>
+      <y>434</y>
+      <w>273</w>
+      <h>98</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+Announcement
+--
++ moment: Date {NotNull, Temporal(TIMESTAMP), Past}
++ title: String {NotBlank}
++ status: AnnouncementStatus
++ text: String {NotBlank}
++ info: String {URL}</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>280</x>
+      <y>462</y>
+      <w>119</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Enum&gt;&gt;
+AnnouncementStatus
+--
++ INFO
++ WARNING
++ IMPORTANT</panel_attributes>
+    <additional_attributes/>
+  </element>
 </diagram>
