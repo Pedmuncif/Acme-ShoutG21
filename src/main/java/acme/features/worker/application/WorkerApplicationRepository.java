@@ -5,7 +5,9 @@ import java.util.Collection;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import acme.entities.applications.Application;
 import acme.entities.jobs.Job;
+import acme.entities.roles.Worker;
 import acme.framework.repositories.AbstractRepository;
 
 @Repository

@@ -6,7 +6,10 @@ import java.util.UUID;
 
 import org.springframework.stereotype.Service;
 
+import acme.entities.applications.Application;
+import acme.entities.applications.ApplicationStatus;
 import acme.entities.jobs.Job;
+import acme.entities.roles.Worker;
 import acme.framework.components.Errors;
 import acme.framework.components.Model;
 import acme.framework.components.Request;
@@ -66,7 +69,7 @@ public class WorkerApplicationCreateService implements AbstractCreateService<Wor
 		Job job;			String reference;
 		Date moment;		Calendar calendar;
 		
-		worker = this.repository.findWorkerById(request.getPrincipal().getActiveRoleId());
+		worker = this.repository.findOneWorkerById(request.getPrincipal().getActiveRoleId());
 		job = this.repository.findOneJobById(request.getModel().getInteger("jobId"));
 		reference = UUID.randomUUID().toString();
 		
