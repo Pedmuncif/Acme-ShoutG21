@@ -1,5 +1,5 @@
 /*
- * AuthenticatedAnnouncementListAllService.java
+ * AuthenticatedAnnouncementListRecentService.java
  *
  * Copyright (C) 2012-2021 Rafael Corchuelo.
  *
@@ -12,7 +12,9 @@
 
 package acme.features.administrator.announcement;
 
+import java.util.Calendar;
 import java.util.Collection;
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,7 +26,7 @@ import acme.framework.entities.Administrator;
 import acme.framework.services.AbstractListService;
 
 @Service
-public class AdministratorAnnouncementListAllService implements AbstractListService<Administrator, Announcement> {
+public class AdministratorAnnouncementListRecentService implements AbstractListService<Administrator, Announcement> {
 
 	// Internal state ---------------------------------------------------------
 
@@ -55,9 +57,15 @@ public class AdministratorAnnouncementListAllService implements AbstractListServ
 		assert request != null;
 
 		Collection<Announcement> result;
+		Calendar calendar;
+		Date deadline;
 
-		result = this.repository.findAllAnnouncements();
-		
+		calendar = Calendar.getInstance();
+		calendar.add(Calendar.MONTH, -1);
+		deadline = calendar.getTime();
+
+		result = this.repository.findRecentAnnouncements(deadline);
+
 		return result;
 	}
 

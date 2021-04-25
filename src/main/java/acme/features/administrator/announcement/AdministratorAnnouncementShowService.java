@@ -1,5 +1,5 @@
 /*
- * AuthenticatedAnnouncementListAllService.java
+ * AuthenticatedAnnouncementShowService.java
  *
  * Copyright (C) 2012-2021 Rafael Corchuelo.
  *
@@ -12,8 +12,6 @@
 
 package acme.features.administrator.announcement;
 
-import java.util.Collection;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,17 +19,17 @@ import acme.entities.announcements.Announcement;
 import acme.framework.components.Model;
 import acme.framework.components.Request;
 import acme.framework.entities.Administrator;
-import acme.framework.services.AbstractListService;
+import acme.framework.services.AbstractShowService;
 
 @Service
-public class AdministratorAnnouncementListAllService implements AbstractListService<Administrator, Announcement> {
+public class AdministratorAnnouncementShowService implements AbstractShowService<Administrator, Announcement> {
 
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
 	protected AdministratorAnnouncementRepository repository;
 
-	// AbstractListService<Administrator, Announcement> interface --------------
+	// AbstractShowService<Administrator, Announcement> interface --------------
 
 
 	@Override
@@ -48,16 +46,20 @@ public class AdministratorAnnouncementListAllService implements AbstractListServ
 		assert model != null;
 
 		request.unbind(entity, model, "title", "moment", "status", "text", "info");
+		model.setAttribute("confirmation", false);
+		model.setAttribute("readonly", true);
 	}
 
 	@Override
-	public Collection<Announcement> findMany(final Request<Announcement> request) {
+	public Announcement findOne(final Request<Announcement> request) {
 		assert request != null;
 
-		Collection<Announcement> result;
+		Announcement result;
+		int id;
 
-		result = this.repository.findAllAnnouncements();
-		
+		id = request.getModel().getInteger("id");
+		result = this.repository.findOneAnnouncementById(id);
+
 		return result;
 	}
 

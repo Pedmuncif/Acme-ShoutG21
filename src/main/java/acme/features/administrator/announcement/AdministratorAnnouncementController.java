@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import acme.components.CustomCommand;
+import acme.entities.announcements.Announcement;
 import acme.framework.components.BasicCommand;
 import acme.framework.controllers.AbstractController;
 import acme.framework.entities.Administrator;
@@ -19,10 +20,13 @@ public class AdministratorAnnouncementController extends AbstractController<Admi
 	protected AdministratorAnnouncementListRecentService listRecentService;
 	
 	@Autowired
+	protected AdministratorAnnouncementListAllService listAllService;
+	
+	@Autowired
 	protected AdministratorAnnouncementShowService showService;
 	
 	@Autowired
-	protected AdminstratorAnnouncementCreateService createService;
+	protected AdministratorAnnouncementCreateService createService;
 	
 	@PostConstruct
 	protected void initialise() {
