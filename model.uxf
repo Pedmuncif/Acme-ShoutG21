@@ -479,7 +479,7 @@ m2=1</panel_attributes>
 Task
 --
 + title: String {NotBlank, Size(max = 80)}
-+ executionPeriod: DateTime {NotNull, Future,Temporal(TIMESTAMP)}
++ executionPeriod: Date {NotNull, Future,Temporal(TIMESTAMP)}
 + workload: Double {NotNull, Digits(integer=3,fraction=2)}
 + description: String {NotBlank, Size(max = 500)}
 + status: TaskStatus {NotNull}</panel_attributes>

@@ -1,6 +1,6 @@
 package acme.entities.tasks;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.Temporal;
@@ -38,12 +38,12 @@ public class Task extends DomainEntity{
 	@Temporal(TemporalType.TIMESTAMP)
 	@Future
 	@NotNull
-	protected LocalDateTime startMoment;
+	protected Date startMoment;
 	
 	@Temporal(TemporalType.TIMESTAMP)
 	@Future
 	@NotNull
-	protected LocalDateTime finishMoment;
+	protected Date finishMoment;
 	
 	@NotNull
 	@Digits(integer=3,fraction=2)
