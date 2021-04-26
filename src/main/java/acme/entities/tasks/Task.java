@@ -50,5 +50,5 @@ public class Task extends DomainEntity{
 	protected String link;
 	
 	@NotNull
-	protected TaskStatus status;
+	protected Boolean status;
 }
